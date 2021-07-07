@@ -91,14 +91,7 @@ class UsuarioController extends Controller
     public function update(Request $request, $id_usuario)
     {
         $usuario = User::findOrFail($id_usuario);
-        $data = $request->only('username','id_empleado');
-        if(trim($request->password) ==''){
-            $data=$request->except('password');
-        }
-        else{
-            $data = $request->all();
-            $data['password'] = bcrypt($request->password);
-        }
+        $data = $request->only('username','id_empleado','password');
 
         $usuario->update($data);
         return redirect()->to('/lista_usuarios');

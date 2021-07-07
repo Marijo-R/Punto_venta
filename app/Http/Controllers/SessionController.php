@@ -36,36 +36,19 @@ class SessionController extends Controller
      */
     public function store(Request $request)
     {
-        if(auth()->attempt(request(['username','password'])) == false) {
-            return back()->withErrors([
-                'message' => 'Te faltan datos o datos erroneos'
-            ]);
+        if(auth()->attempt(request(['username','password'])) == true) {
+            $request->session()->regenerate();
+
+            return redirect()->intended('index');
         }
-        return redirect()->to('index');
+        return back()->withErrors([
+            'username' => 'Las credenciales introducidas no coinciden con los registros.'
+        ]);
     }
     
     public function username()
     {
         return 'username';
-    }
-
-    public function authenticate(Request $request)
-    {
-        $credentials = $request->validate([
-            'username' => ['required', 'username'],
-            'password' => ['required'],
-            'status' => [1]
-        ]);
-
-        if (Auth::attempt([$credentials])) {
-            $request->session()->regenerate();
-
-            return redirect()->intended('index');
-        }
-        
-        return back()->withErrors([
-            'username' => 'The provided credentials do not match our records.',
-        ]);
     }
 
     /**

@@ -77,7 +77,7 @@
                                 class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li><a href="{{ url('/lista_empleados') }}">Empleados</a></li>
-                            <li><a href="{{ url('/lista_puestos') }}">Puestos</a></li>
+                            <li><a href="{{ url('/lista_pues') }}">Puestos</a></li>
                         </ul>
                     </li>
                     <li>

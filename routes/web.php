@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\TipoMedidaController;
+use App\Http\Controllers\PuestoController;
+
 
 Route::view('index','index')->middleware('auth');
 
@@ -31,3 +33,13 @@ Route::put('/actualizar_medida/update/{id_medida}', [TipoMedidaController::class
 Route::delete('/eliminar_medida/{id_medida}', [TipoMedidaController::class, 'destroy'])->name('destroyMed')->middleware('auth');
 Route::get('/papelera_medida', [TipoMedidaController::class, 'recycle'])->name('recycleMed')->middleware('auth');
 Route::get('/recuperar_medida/{id_medida}', [TipoMedidaController::class, 'recover'])->name('recoverMed')->middleware('auth');
+
+//CRUD - Puesto_empleado
+Route::get('/lista_pues', [PuestoController::class, 'index'])->name('indexPues')->middleware('auth');
+Route::get('/registrar_pues', [PuestoController::class, 'create'])->name('createPues')->middleware('auth');
+Route::post('/registrar_pues', [PuestoController::class, 'store'])->name('storePues')->middleware('auth');
+Route::get('/actualizar_pues/{id_puesto}', [PuestoController::class, 'edit'])->name('editPues')->middleware('auth');
+Route::put('/actualizar_pues/update/{id_puesto}', [PuestoController::class, 'update'])->name('updatePues')->middleware('auth');
+Route::delete('/eliminar_pues/{id_puesto}', [PuestoController::class, 'destroy'])->name('destroyPues')->middleware('auth');
+Route::get('/papelera_pues', [PuestoController::class, 'recycle'])->name('recyclePues')->middleware('auth');
+Route::get('/recuperar_pues/{id_puesto}', [PuestoController::class, 'recover'])->name('recoverPues')->middleware('auth');
