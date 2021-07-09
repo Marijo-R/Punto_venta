@@ -18,20 +18,25 @@
                                     <div class="row">
                                         <div class=" col s12 m6">
                                             <label for="puesto" class="form-label">Puesto</label>
-                                            <input type="varchar" class="form-control validate" name="puesto" id="puesto" autocomplete="puesto" value="{{ $puesto->puesto}}">
+                                            <input type="varchar" class="form-control validate" name="puesto" id="puesto" autocomplete="puesto" value="{{ old('puesto',$puesto->puesto)}}">
+                                            @if($errors->has('puesto'))
+                                                <span class="error text-danger">
+                                                    {{$errors->first('puesto')}}
+                                                </span>
+                                            @endif
                                         </div>
                                     </div>
                                     <div class="col s12 m11 offset-m1 xl7 offset-xl1 ">
                                         <div class="btn-group right">
                                             <span tooltip="Clic para cancelar la operación" flow="left">
-                                                <a href="{{ route('indexPues') }}" class="btn-danger dropdown-toggle btn">
+                                                <a href="{{ route('indexPues') }}" class="btn-danger dropdown-toggle btn" onclick="return confirm('¿Está seguro de cancelar la operación?')">
                                                     <i class="material-icons left">cancel</i>CANCELAR
                                                 </a>
                                             </span>
                                         </div>
                                         <div class="btn-group col-sm-2 right">
                                             <span tooltip="Clic para guardar la información" flow="left">
-                                                <button type="submit" class="btn btn-success" value="Guardar">
+                                                <button type="submit" class="btn btn-success" value="Guardar" onclick="return confirm('¿Está seguro de guardar las actualizaciones del registro de puesto?')">
                                                     <i class="material-icons left">check_circle</i>GUARDAR
                                                 </button>
                                             </span>

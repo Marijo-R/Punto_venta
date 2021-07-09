@@ -151,6 +151,10 @@ return [
 	|
 	*/
 
-	'attributes' => [],
+	'attributes' => [
+		'username' => 'usuario',
+		'password' => 'contraseña',
+		'id_empleado' => 'nombre del empleado'
+	],
 	
 ];

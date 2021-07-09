@@ -18,6 +18,8 @@
     <link href="http://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css" />
     <!-- Materialize-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Mensaje flotante-->
+    <link href="{{ asset('assets/css/tooltip.css') }}" rel="stylesheet">
 
 </head>
 

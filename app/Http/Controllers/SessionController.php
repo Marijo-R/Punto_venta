@@ -36,13 +36,13 @@ class SessionController extends Controller
      */
     public function store(Request $request)
     {
-        if(auth()->attempt(request(['username','password'])) == true) {
+        if(auth()->attempt(request(['username','password'])) == true) 
+        {
             $request->session()->regenerate();
-
             return redirect()->intended('index');
         }
         return back()->withErrors([
-            'username' => 'Las credenciales introducidas no coinciden con los registros.'
+            'password' => 'Las credenciales introducidas no coinciden con los registros.'
         ]);
     }
     

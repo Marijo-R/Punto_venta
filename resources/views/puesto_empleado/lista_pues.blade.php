@@ -48,8 +48,8 @@
                             <form action="{{ route('indexPues') }}" method="GET">
                               <div class="dataTables_length" id="dataTables-example_length">
                                 <label>
-                                  Buscar
-                                  <input type="text" name="texto" value="{{ $texto }}" class="form-control input-sm" aria-controls="dataTables-example">
+                                  <input type="varchar" name="texto" value="{{ $texto }}" class="form-control input-sm" aria-controls="dataTables-example"
+                                          placeholder="Buscar">
                                 </label>
                                 <button type="submit" class="btn btn-default" value="Buscar">
                                   <span class="glyphicon glyphicon-search"></span>
@@ -89,7 +89,8 @@
                                   <span tooltip="Clic para eliminar puesto" flow="left">
                                     {{ method_field('DELETE') }}
                                     {{ @csrf_field() }}
-                                    <button type="submit" onclick="return confirm('¿Esta seguro de eliminar?')" class="btn btn-danger">
+                                    <button type="submit" class="btn btn-danger" 
+                                            onclick="return confirm(`El registro no estará disponible para operaciones en el sistema, para reestablecerlo deberá hacerlo desde papelera`)">
                                       <i class="fa fa-trash-o"></i>
                                     </button>
                                   </span>
@@ -105,26 +106,13 @@
                       <div class="row">
                         <div class="col-sm-6">
                           <div class="dataTables_info" id="dataTables-example_info" role="alert" aria-live="polite" aria-relevant="all">
-                            Mostrando 1 a 4 de 4 entradas
+                            Mostrando {{$puestos->perPage()}} a {{$puestos->lastItem()}} de {{$puestos->total()}} entradas
                           </div>
                         </div>
 
-                        <div class="col-sm-3 right">
+                        <div class="col-sm-4 right">
                           <div>
-                            <ul class="pagination">
-                              <li class="paginate_button previous disabled" >
-                                <a href="#">Anterior</a>
-                              </li>
-                              <li class="paginate_button previous disabled" aria-controls="dataTables-example" tabindex="0">
-                                <a href="#">1</a>
-                              </li>
-                              <li class="paginate_button previous disabled" aria-controls="dataTables-example" tabindex="0">
-                                <a href="#">2</a>
-                              </li>
-                              <li class="paginate_button previous disabled"  >
-                                <a href="#">Siguiente</a>
-                              </li>
-                            </ul>
+                              {{ $puestos->links('vendor.pagination.default') }}
                           </div>
                         </div>
                       </div>

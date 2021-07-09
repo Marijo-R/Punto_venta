@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Empleado;
 use Illuminate\Support\Facades\DB;
+use App\Http\Requests\userCreateRequest;
+use App\Http\Requests\userEditRequest;
 
 class UsuarioController extends Controller
 {
@@ -24,7 +26,7 @@ class UsuarioController extends Controller
                                                 $query->where('username','LIKE','%'.$texto.'%')
                                                       ->orwhere('nombre','LIKE','%'.$texto.'%');
                                                 })
-                                            ->paginate(10);
+                                            ->paginate(2);
         return view('usuarios.lista_usuarios', compact('usuarios','texto'));
     }
 
@@ -45,14 +47,8 @@ class UsuarioController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(userCreateRequest $request)
     {
-        $this->validate(request(), [
-            'username' => ['required', 'string', 'max:255', 'unique:users'],
-            'id_empleado' => ['required', 'string', 'max:255'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
-        ]);
-
         $usuarios = User::create(request(['username', 'password', 'id_empleado']));
         return redirect()->to('/lista_usuarios');
     }
@@ -88,7 +84,7 @@ class UsuarioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id_usuario)
+    public function update(userEditRequest $request, $id_usuario)
     {
         $usuario = User::findOrFail($id_usuario);
         $data = $request->only('username','id_empleado','password');
@@ -121,7 +117,7 @@ class UsuarioController extends Controller
                                                     $query->where('username','LIKE','%'.$texto.'%')
                                                           ->orwhere('nombre','LIKE','%'.$texto.'%');
                                                 })
-                                                ->paginate(10);
+                                                ->paginate(2);
         return view('usuarios.papelera_usu', compact('usuarios','texto'));
     }
     

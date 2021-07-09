@@ -60,7 +60,7 @@
                       <table class="table table-striped table-bordered table-hover">
                         <thead>
                             <tr>
-                              <th class="center">#</th>
+                              <th class="center">No.</th>
                               <th class="center">Unidad de medida</th>
                               <th class="center">Simbolo</th>
                               <th class="center" scope="col" colspan="3">Opciones</th>

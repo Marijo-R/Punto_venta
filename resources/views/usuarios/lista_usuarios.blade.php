@@ -37,11 +37,10 @@
                             <div class="dataTables_length" id="dataTables-example_length">
                               <label>
                                 Registros por página
-                                <select name="dataTables-example_length" aria-controls="dataTables-example" class="form-control input-sm">
+                                <select  id="select-list" name="dataTables-example_length" aria-controls="dataTables-example" class="form-control input-sm">
                                   <option value="10">10</option>
                                   <option value="25">25</option>
                                   <option value="50">50</option>
-                                  <option value="100">100</option>
                                 </select> 
                               </label>
                             </div>
@@ -50,8 +49,8 @@
                             <form action="{{ route('indexUs') }}" method="GET">
                               <div class="dataTables_length" id="dataTables-example_length">
                                 <label>
-                                  Buscar
-                                  <input type="text" name="texto" value="{{ $texto }}" class="form-control input-sm" aria-controls="dataTables-example">
+                                  <input type="varchar" name="texto" value="{{ $texto }}" class="form-control input-sm" aria-controls="dataTables-example"
+                                          placeholder="Buscar">
                                 </label>
                                 <button type="submit" class="btn btn-default" value="Buscar">
                                   <span class="glyphicon glyphicon-search"></span>
@@ -80,7 +79,7 @@
                           <tr class="odd gradeX">
                             <td class="center">{{$loop->index + 1}}</td>
                             <td class="center">{{$usuario->username}}</td>
-                            <td class="center">{{$usuario->nombre}}</td>
+                            <td class="center">{{$usuario->nombre}} {{$usuario->primer_apellido}}</td>
                             <td class="center"  WIDTH="70">
                               <span tooltip="Clic para editar usuario" flow="left">
                                 <a href="{{ route('editUs', $usuario->id) }}" class="btn-primary dropdown-toggle btn">
@@ -92,40 +91,29 @@
                               <form action="{{ route('destroyUs', $usuario->id) }}" method="POST">
                                 {{ method_field('DELETE') }}
                                 {{ @csrf_field() }}
-                                <button type="submit" onclick="return confirm('¿Esta seguro de eliminar?')" class="btn btn-danger">
-                                  <i class="fa fa-trash-o"></i>
-                                </button>
+                                <span tooltip="Clic para eliminar el usuario" flow="left">
+                                  <button type="submit" class="btn btn-danger" 
+                                        onclick="return confirm(`El registro no estará disponible para operaciones en el sistema, para reestablecerlo deberá hacerlo desde papelera`)" >
+                                    <i class="fa fa-trash-o"></i>
+                                  </button>
+                                <span tooltip="Clic para editar usuario" flow="left">
                               </form>
                             </td>
                           </tr> 
                           @endforeach
                           @endif 
                         </tbody>
-                      </table>  
-
+                      </table> 
                       <div class="row">
                         <div class="col-sm-6">
                           <div class="dataTables_info" id="dataTables-example_info" role="alert" aria-live="polite" aria-relevant="all">
-                            Mostrando 1 a 4 de 4 entradas
+                            Mostrando {{$usuarios->count()}} a {{$usuarios->lastItem()}} de {{$usuarios->total()}} entradas
                           </div>
                         </div>
 
-                        <div class="col-sm-3 right">
+                        <div class="col-sm-4 right">
                           <div>
-                            <ul class="pagination">
-                              <li class="paginate_button previous disabled" >
-                                <a href="#">Anterior</a>
-                              </li>
-                              <li class="paginate_button previous disabled" aria-controls="dataTables-example" tabindex="0">
-                                <a href="#">1</a>
-                              </li>
-                              <li class="paginate_button previous disabled" aria-controls="dataTables-example" tabindex="0">
-                                <a href="#">2</a>
-                              </li>
-                              <li class="paginate_button previous disabled"  >
-                                <a href="#">Siguiente</a>
-                              </li>
-                            </ul>
+                              {{ $usuarios->links('vendor.pagination.default') }}
                           </div>
                         </div>
                       </div>

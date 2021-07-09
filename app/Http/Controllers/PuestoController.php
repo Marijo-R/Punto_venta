@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Puesto;
 use Illuminate\Support\Facades\DB;
+use App\Http\Requests\puestoCreateRequest;
+use App\Http\Requests\puestoEditRequest;
 
 class PuestoController extends Controller
 {
@@ -22,7 +24,7 @@ class PuestoController extends Controller
                                                     $query->where('puesto','LIKE','%'.$texto.'%');
                                                 })
                                               ->orderBy('puesto','asc')
-                                              ->paginate(10);
+                                              ->paginate(2);
         return view('puesto_empleado.lista_pues', compact('puestos','texto'));
     }
 
@@ -42,7 +44,7 @@ class PuestoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(puestoCreateRequest $request)
     {
         $puesto = new Puesto;
         $puesto->puesto = $request->input('puesto');
@@ -81,7 +83,7 @@ class PuestoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id_puesto)
+    public function update(puestoEditRequest $request, $id_puesto)
     {
         $puesto = Puesto::findOrFail($id_puesto);
         $puesto->puesto = $request->input('puesto');
@@ -113,7 +115,7 @@ class PuestoController extends Controller
                                                     $query->where('puesto','LIKE','%'.$texto.'%');
                                                 })
                                                 ->orderBy('puesto','asc')
-                                                ->paginate(10);
+                                                ->paginate(2);
         return view('puesto_empleado.papelera_pues', compact('puestos','texto'));
     }
     

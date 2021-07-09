@@ -19,22 +19,22 @@
                                 <div class="col s12 m6">
                                     <label for="username" class="form-label">{{ __('Usuario') }}</label>
                                         <input id="username" type="username" class="form-control @error('username') is-invalid @enderror" name="username" 
-                                                required autocomplete="username" autofocus maxlength="15" value="{{ $usuario->username}}">
-                                        @error('username')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
+                                                required autocomplete="username" autofocus maxlength="15" value="{{ old('username',$usuario->username)}}">
+                                        @if($errors->has('username'))
+                                            <span class="error text-danger">
+                                                {{$errors->first('username')}}
                                             </span>
-                                        @enderror
+                                        @endif
                                 </div>
                                 <div class="col s12 m6">
                                     <label for="password">{{ __('Contraseña')}}</label>
                                     <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" autocomplete="new-password" 
                                             placeholder="Ingrese la contraseña solo en caso de modificarla" maxlength="32" >
-                                    @error('password')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
+                                        @if($errors->has('password'))
+                                            <span class="error text-danger">
+                                                {{$errors->first('password')}}
+                                            </span>
+                                        @endif
                                 </div>
                             </div>
                             <div class="row">
@@ -50,20 +50,27 @@
                                             <option value="{{$empleado->id_empleado}}">{{ $empleado->nombre }} {{ $empleado->primer_apellido }}</option  required>
                                             @endforeach
                                         </select>
+                                    @if($errors->has('id_empleado'))
+                                        <span class="error text-danger">
+                                            {{$errors->first('id_empleado')}}
+                                        </span>
+                                    @endif
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col s12 m11 offset-m1 xl7 offset-xl1 ">
                                     <div class="btn-group right">
                                         <span tooltip="Clic para cancelar la operación" flow="left">
-                                            <a href="{{ route('indexUs') }}" class="btn-danger dropdown-toggle btn">
+                                            <a href="{{ route('indexUs') }}" onclick="return confirm('¿Está seguro de cancelar la operación?')" class="btn-danger dropdown-toggle btn">
                                                 <i class="material-icons left">cancel</i>CANCELAR
                                             </a>
                                         </span>
                                     </div>
                                     <div class="btn-group col-sm-2 right">
                                         <span tooltip="Clic para guardar la información" flow="left">
-                                            <button type="submit" class="btn btn-success"><i class="material-icons left">check_circle</i>{{ __('Guardar') }}</button>
+                                            <button type="submit" class="btn btn-success" onclick="return confirm('¿Está seguro de guardar las actualizaciones del registro de usuario?')" >
+                                                <i class="material-icons left">check_circle</i>{{ __('Guardar') }}
+                                            </button>
                                         </span>
                                     </div>
                                 </div>

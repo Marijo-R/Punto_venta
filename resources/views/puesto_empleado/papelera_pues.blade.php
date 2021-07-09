@@ -4,7 +4,7 @@
         <div id="page-wrapper" >        
           <div class="header"> 
             <h1 class="page-header">
-              <b>PAPELERA-PUESTOS</b>
+              <b>PAPELERA PUESTOS</b>
             </h1>  
           </div>
 
@@ -42,8 +42,8 @@
                             <form action="{{ route('recyclePues') }}" method="GET">
                               <div class="dataTables_length" id="dataTables-example_length">
                                 <label>
-                                  Buscar
-                                  <input type="text" name="texto" value="{{ $texto }}" class="form-control input-sm" aria-controls="dataTables-example">
+                                  <input type="varchar" name="texto" value="{{ $texto }}" class="form-control input-sm" aria-controls="dataTables-example"
+                                          placeholder="Buscar">
                                 </label>
                                 <button type="submit" class="btn btn-default" value="Buscar">
                                   <span class="glyphicon glyphicon-search"></span>
@@ -72,9 +72,11 @@
                               <td class="center">{{ $loop->index + 1 }}</td>
                               <td class="center">{{ $puesto->puesto }}</td>
                               <td class="center">
-                                <a onclick="Alertabtn()">
-                                  <button onclick="location.href='{{ route('recoverPues',$puesto->id_puesto ) }}'"  type="submit" class="btn-primary dropdown-toggle btn"><i class="fa fa-repeat"></i></button>
-                                </a>
+                                <span tooltip="Clic para reestablecer el registro" flow="left">
+                                  <a href="{{ route('recoverPues',$puesto->id_puesto ) }}" onclick="return confirm('¿Está seguro de reestablecer el registro?')" class="btn-primary dropdown-toggle btn">
+                                  <i class="fa fa-repeat"></i>
+                                  </a>
+                                </span>
                               </td>
                             </tr>
                             @endforeach
@@ -86,26 +88,13 @@
                       <div class="row">
                         <div class="col-sm-6">
                           <div class="dataTables_info" id="dataTables-example_info" role="alert" aria-live="polite" aria-relevant="all">
-                            Mostrando 1 a 3 de 3 entradas
+                            Mostrando {{$puestos->firstItem()}} a {{$puestos->lastItem()}} de {{$puestos->total()}} entradas
                           </div>
                         </div>
 
-                        <div class="col-sm-3 right">
+                        <div class="col-sm-4 right">
                           <div>
-                            <ul class="pagination">
-                              <li class="paginate_button previous disabled" >
-                                <a href="#">Anterior</a>
-                              </li>
-                              <li class="paginate_button previous disabled" aria-controls="dataTables-example" tabindex="0">
-                                <a href="#">1</a>
-                              </li>
-                              <li class="paginate_button previous disabled" aria-controls="dataTables-example" tabindex="0">
-                                <a href="#">2</a>
-                              </li>
-                              <li class="paginate_button previous disabled"  >
-                                <a href="#">Siguiente</a>
-                              </li>
-                            </ul>
+                              {{ $puestos->links('vendor.pagination.default') }}
                           </div>
                         </div>
                       </div>

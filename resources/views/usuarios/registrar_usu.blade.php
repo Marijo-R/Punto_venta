@@ -20,21 +20,21 @@
                                         <label for="usuario" class="form-label">{{ __('Usuario') }}</label>
                                             <input id="username" type="username" class="form-control @error('username') is-invalid @enderror" name="username" 
                                                     value="{{ old('username') }}" required autocomplete="username" autofocus placeholder="Usuario" maxlength="15">
-                                            @error('username')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
+                                            @if($errors->has('username'))
+                                                <span class="error text-danger">
+                                                    {{$errors->first('username')}}
                                                 </span>
-                                            @enderror
+                                            @endif
                                     </div>
                                     <div class="col s12 m4">
                                         <label for="password">{{ __('Contraseña')}}</label>
                                         <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" 
-                                                    required autocomplete="new-password" placeholder="Contraseña" maxlength="32">
-                                        @error('password')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
+                                                    required autocomplete="new-password" value="{{ old('password') }}" placeholder="Contraseña" maxlength="32">
+                                            @if($errors->has('password'))
+                                                <span class="error text-danger">
+                                                    {{$errors->first('password')}}
+                                                </span>
+                                            @endif
                                     </div>
                                     <div class="col s12 m4">
                                         <label for="password">{{ __('Confirmar contraseña') }}</label>
@@ -49,26 +49,33 @@
                                     </div>
                                     <div class="col s12 m8">
                                         <label for="id_empleado" class="col-md-4 col-form-label text-md-right">{{ __('Nombre del empleado') }}</label>
-                                            <select id='nom_emp' name="id_empleado" type="varchar" class="form-control" onchange='empleadoOpciones();'>
+                                            <select id='nom_emp' name="id_empleado" type="varchar" class="form-control @error('id_empleado') is-invalid @enderror" onchange='empleadoOpciones();'>
                                                 <option value="" disabled selected >Desplega la lista...</option>
                                                 @foreach($empleados as $empleado)
                                                 <option value="{{$empleado->id_empleado}}">{{ $empleado->nombre }} {{ $empleado->primer_apellido }}</option  required>
                                                 @endforeach
                                             </select>
+                                        @if($errors->has('id_empleado'))
+                                            <span class="error text-danger">
+                                                {{$errors->first('id_empleado')}}
+                                            </span>
+                                        @endif
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col s12 m11 offset-m1 xl7 offset-xl1 ">
                                         <div class="btn-group right">
                                             <span tooltip="Clic para cancelar la operación" flow="left">
-                                                <a href="{{ route('indexUs') }}" class="btn-danger dropdown-toggle btn">
+                                                <a href="{{ route('indexUs') }}" onclick="return confirm('¿Está seguro de cancelar la operación?')" class="btn-danger dropdown-toggle btn">
                                                     <i class="material-icons left">cancel</i>CANCELAR
                                                 </a>
                                             </span>
                                         </div>
                                         <div class="btn-group col-sm-2 right">
                                             <span tooltip="Clic para guardar la información" flow="left">
-                                                <button type="submit" class="btn btn-success"><i class="material-icons left">check_circle</i>{{ __('GUARDAR') }}</button>
+                                                <button type="submit" class="btn btn-success" onclick="return confirm('¿Está seguro de guardar el nuevo registro de usuario?')">
+                                                    <i class="material-icons left">check_circle</i>{{ __('GUARDAR') }}
+                                                </button>
                                             </span>
                                         </div>
                                         <div class="btn-group col-sm-3 ">
