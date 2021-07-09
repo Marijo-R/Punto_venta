@@ -45,7 +45,6 @@
                                 <div class="col s12 m8">
                                     <label for="id_empleado" class="col-md-4 col-form-label text-md-right">{{ __('Nombre del empleado') }}</label>
                                         <select id='nom_emp' name="id_empleado" type="varchar" class="form-control" onchange='empleadoOpciones();'>
-                                            <option value="" disabled selected >Desplega la lista...</option>
                                             @foreach($empleados as $empleado)
                                             <option value="{{$empleado->id_empleado}}">{{ $empleado->nombre }} {{ $empleado->primer_apellido }}</option  required>
                                             @endforeach

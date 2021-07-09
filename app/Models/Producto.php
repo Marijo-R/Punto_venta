@@ -18,7 +18,8 @@ class Producto extends Model
     const CREATED_AT = 'fecha_creacion';
     const UPDATED_AT = 'ult_modificacion';
 
-    protected $fillable = ['codigo', 
+    protected $fillable = ['id_usuario',
+                            'codigo', 
                             'codigo_alterno', 
                             'nombre', 
                             'descripcion', 
@@ -33,8 +34,8 @@ class Producto extends Model
                             'comision_porcentaje', 
                             'codigo_sat', 
                             'unidad_sat', 
-                            'estatus',
-                            'id'];
+                            'estatus'
+                            ];
 
     
     public function medida()
@@ -42,7 +43,7 @@ class Producto extends Model
         return $this->belongsTo('App\Models\TipoMedida','id_medida');
     }
 
-    public function usuario()
+    public function producto()
     {
         return $this->belongsTo('App\Models\User','id');
     }

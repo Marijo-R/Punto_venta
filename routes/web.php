@@ -5,6 +5,7 @@ use App\Http\Controllers\SessionController;
 use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\TipoMedidaController;
 use App\Http\Controllers\PuestoController;
+use App\Http\Controllers\ProductoController;
 
 
 Route::view('index','index')->middleware('auth');
@@ -33,6 +34,16 @@ Route::put('/actualizar_medida/update/{id_medida}', [TipoMedidaController::class
 Route::delete('/eliminar_medida/{id_medida}', [TipoMedidaController::class, 'destroy'])->name('destroyMed')->middleware('auth');
 Route::get('/papelera_medida', [TipoMedidaController::class, 'recycle'])->name('recycleMed')->middleware('auth');
 Route::get('/recuperar_medida/{id_medida}', [TipoMedidaController::class, 'recover'])->name('recoverMed')->middleware('auth');
+
+//CRUD - Producto
+Route::get('/lista_productos', [ProductoController::class, 'index'])->name('indexProd')->middleware('auth');
+Route::get('/registrar_producto', [ProductoController::class, 'create'])->name('createProd')->middleware('auth');
+Route::post('/registrar_producto', [ProductoController::class, 'store'])->name('storeProd')->middleware('auth');
+Route::get('/actualizar_producto/{id_producto}', [ProductoController::class, 'edit'])->name('editProd')->middleware('auth');
+Route::put('/actualizar_producto/update/{id_producto}', [ProductoController::class, 'update'])->name('updateProd')->middleware('auth');
+Route::delete('/eliminar_producto/{id_producto}', [ProductoController::class, 'destroy'])->name('destroyProd')->middleware('auth');
+Route::get('/papelera_producto', [ProductoController::class, 'recycle'])->name('recycleProd')->middleware('auth');
+Route::get('/recuperar_producto/{id_producto}', [ProductoController::class, 'recover'])->name('recoverProd')->middleware('auth');
 
 //CRUD - Puesto_empleado
 Route::get('/lista_pues', [PuestoController::class, 'index'])->name('indexPues')->middleware('auth');
