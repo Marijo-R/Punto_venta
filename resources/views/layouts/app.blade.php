@@ -125,6 +125,18 @@
 
     @yield('content')
 
+    <script>
+        function fisico() {
+            document.getElementById("fisico").style.display = "block";
+            document.getElementById("moral").style.display = "none";
+        }
+
+        function moral() {
+            document.getElementById("moral").style.display = "block";
+            document.getElementById("fisico").style.display = "none";
+        }
+    </script>
+
     <!-- Despliegue de submenu y boton cerrar -->
     <script src="{{ asset('assets/js/jquery-1.10.2.js') }}"></script>
     <!-- botón cerrar sesión -->
