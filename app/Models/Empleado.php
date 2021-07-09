@@ -16,10 +16,29 @@ class Empleado extends Model
     const CREATED_AT = 'fecha_creación';
     const UPDATE_AT = 'ult_modificacion';
 
-    protected $fillable =['alias','nombre','primer_apellido','segundo_apellido','nss','curp',
-                        'fecha_nac','email','calle','entre_calles','no_exterior','no_interior',
-                        'cod_postal','colonia','localidad','ciudad','entidad_fed','pais','comentarios',
-                        'limite_credito','dias_credito','frecuente','estatus'];
+    protected $fillable =['alias',
+                          'nombre',
+                          'primer_apellido',
+                          'segundo_apellido',
+                          'nss',
+                          'curp',
+                          'fecha_nac',
+                          'email',
+                          'calle',
+                          'entre_calles',
+                          'no_exterior',
+                          'no_interior',
+                          'cod_postal',
+                          'colonia',
+                          'localidad',
+                          'ciudad',
+                          'entidad_fed',
+                          'pais',
+                          'comentarios',
+                          'limite_credito',
+                          'dias_credito',
+                          'frecuente',
+                          'estatus'];
 
     
     public function usuario() {
