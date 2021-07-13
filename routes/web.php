@@ -84,11 +84,11 @@ Route::get('/recuperar_cliente_fis/{id_cliente}', [ClienteFisController::class, 
 Route::get('/lista_clientes_mor', [ClienteMorController::class, 'index'])->name('indexCliMor')->middleware('auth');
 Route::get('/registrar_cliente_mor', [ClienteMorController::class, 'create'])->name('createCliMor')->middleware('auth');
 Route::post('/registrar_cliente_mor', [ClienteMorController::class, 'store'])->name('storeCliMor')->middleware('auth');
-Route::get('/actualizar_cliente/{id_cliente}', [ClienteMorController::class, 'edit'])->name('editCliMor')->middleware('auth');
-Route::put('/actualizar_cliente/update/{id_cliente}', [ClienteMorController::class, 'update'])->name('updateCliMor')->middleware('auth');
-Route::delete('/eliminar_cliente/{id_cliente}', [ClienteMorController::class, 'destroy'])->name('destroyCliMor')->middleware('auth');
-Route::get('/papelera_cliente', [ClienteMorController::class, 'recycle'])->name('recycleCliMor')->middleware('auth');
-Route::get('/recuperar_cliente/{id_cliente}', [ClienteMorController::class, 'recover'])->name('recoverCliMor')->middleware('auth');
+Route::get('/actualizar_cliente_mor/{id_cliente}', [ClienteMorController::class, 'edit'])->name('editCliMor')->middleware('auth');
+Route::put('/actualizar_cliente_mor/update/{id_cliente}', [ClienteMorController::class, 'update'])->name('updateCliMor')->middleware('auth');
+Route::delete('/eliminar_cliente_mor/{id_cliente}', [ClienteMorController::class, 'destroy'])->name('destroyCliMor')->middleware('auth');
+Route::get('/papelera_cliente_mor', [ClienteMorController::class, 'recycle'])->name('recycleCliMor')->middleware('auth');
+Route::get('/recuperar_cliente_mor/{id_cliente}', [ClienteMorController::class, 'recover'])->name('recoverCliMor')->middleware('auth');
 
 //CRUD - Proveedor Fisico
 Route::get('/lista_proveedores_fis', [ProveedorFisController::class, 'index'])->name('indexProvFis')->middleware('auth');
