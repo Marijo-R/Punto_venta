@@ -83,13 +83,16 @@
                         </ul>
                     </li>
                     <li>
-                        <a href="{{ url('/lista_proveedores') }}" class="waves-effect waves-dark"><i
-                                class="fa fa-truck"></i>
-                            Proveedores</a>
+                        <a href="{{ url('/lista_proveedores') }}" class="waves-effect waves-dark">
+                        <i class="fa fa-truck"></i>Proveedores</a>
                     </li>
                     <li>
-                        <a href="{{ url('/lista_clientes') }}" class="waves-effect waves-dark"><i
-                                class="fa fa-male"></i> Clientes</a>
+                        <a class="waves-effect waves-dark"><i class="fa fa-male"></i> Clientes<span
+                                class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li><a href="{{ url('/lista_clientes_fis') }}">Clientes Físicos</a></li>
+                            <li><a href="{{ url('/lista_clientes_mor') }}">Clientes Morales</a></li>
+                        </ul>
                     </li>
                     <li>
                         <a href="{{ url('/lista_ventas') }}" class="waves-effect waves-dark"><i
@@ -127,7 +130,7 @@
 
     @yield('content')
 
-    <script>
+    <!-- <script>
         function fisico() {
             document.getElementById("fisico").style.display = "block";
             document.getElementById("moral").style.display = "none";
@@ -137,7 +140,7 @@
             document.getElementById("moral").style.display = "block";
             document.getElementById("fisico").style.display = "none";
         }
-    </script>
+    </script> -->
 
     <!-- Despliegue de submenu y boton cerrar -->
     <script src="{{ asset('assets/js/jquery-1.10.2.js') }}"></script>

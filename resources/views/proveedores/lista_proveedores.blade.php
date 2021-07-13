@@ -109,13 +109,13 @@
                                                     </td>
                                                     <td class="center" WIDTH="70">
                                                         <button data-toggle="modal"
-                                                            data-target="#modalempleado-{{ $proveedor->id_proveedor }}"
+                                                            data-target="#modalproveedor-{{ $proveedor->id_proveedor }}"
                                                             type="submit" class="btn btn-info"><i
                                                                 class="fa fa-eye"></i></button>
                                                     </td>
                                                 </tr>
                                                 <!-- Modal de empleados-->
-                                                <div class="modal fade" id="modalempleado-{{ $proveedor->id_proveedor }}"
+                                                <div class="modal fade" id="modalproveedor-{{ $proveedor->id_proveedor }}"
                                                     tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
                                                     aria-hidden="true">
                                                     <div role="document">
@@ -326,34 +326,18 @@
                                         @endif
                                     </tbody>
                                 </table>
-
+                                 
                                 <div class="row">
                                     <div class="col-sm-6">
-                                        <div class="dataTables_info" id="dataTables-example_info" role="alert"
-                                            aria-live="polite" aria-relevant="all">
-                                            Mostrando 1 a 4 de 4 entradas
-                                        </div>
+                                    <div class="dataTables_info" id="dataTables-example_info" role="alert" aria-live="polite" aria-relevant="all">
+                                        Mostrando {{$proveedores->count()}} a {{$proveedores->lastItem()}} de {{$proveedores->total()}} entradas
+                                    </div>
                                     </div>
 
-                                    <div class="col-sm-3 right">
-                                        <div>
-                                            <ul class="pagination">
-                                                <li class="paginate_button previous disabled">
-                                                    <a href="#">Anterior</a>
-                                                </li>
-                                                <li class="paginate_button previous disabled"
-                                                    aria-controls="dataTables-example" tabindex="0">
-                                                    <a href="#">1</a>
-                                                </li>
-                                                <li class="paginate_button previous disabled"
-                                                    aria-controls="dataTables-example" tabindex="0">
-                                                    <a href="#">2</a>
-                                                </li>
-                                                <li class="paginate_button previous disabled">
-                                                    <a href="#">Siguiente</a>
-                                                </li>
-                                            </ul>
-                                        </div>
+                                    <div class="col-sm-4 right">
+                                    <div>
+                                        {{ $proveedores->links('vendor.pagination.default') }}
+                                    </div>
                                     </div>
                                 </div>
                             </div>

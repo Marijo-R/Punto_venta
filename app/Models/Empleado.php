@@ -13,8 +13,8 @@ class Empleado extends Model
     protected $primaryKey = 'id_empleado';
     protected $keyType = 'integer';
 
-    const CREATED_AT = 'fecha_creación';
-    const UPDATE_AT = 'ult_modificacion';
+    const CREATED_AT = 'fecha_creacion';
+    const UPDATED_AT = 'ult_modificacion';
 
     protected $fillable =['alias',
                           'nombre',

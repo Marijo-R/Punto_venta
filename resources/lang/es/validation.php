@@ -154,7 +154,17 @@ return [
 	'attributes' => [
 		'username' => 'usuario',
 		'password' => 'contraseña',
-		'id_empleado' => 'nombre del empleado'
+		'id_empleado' => 'nombre del empleado',
+		'fecha_nac' => 'para la fecha de nacimiento',
+		'email' => 'correo electrónico',
+		'tipo' => 'tipo de número',
+		'telefono' => 'número de teléfono',
+		'no_interior' => 'no. interior',
+		'no_exterior' => 'no. exterior',
+		'cod_postal' => 'código postal',
+		'entidad_fed' => 'estado',
+		'pais' => 'país',
+		'no_cliente' => 'número de cliente',
 	],
 	
 ];

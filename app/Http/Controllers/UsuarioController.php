@@ -26,7 +26,7 @@ class UsuarioController extends Controller
                                                 $query->where('username','LIKE','%'.$texto.'%')
                                                       ->orwhere('nombre','LIKE','%'.$texto.'%');
                                                 })
-                                            ->paginate(2);
+                                            ->paginate(5);
         return view('usuarios.lista_usuarios', compact('usuarios','texto'));
     }
 
@@ -117,7 +117,7 @@ class UsuarioController extends Controller
                                                     $query->where('username','LIKE','%'.$texto.'%')
                                                           ->orwhere('nombre','LIKE','%'.$texto.'%');
                                                 })
-                                                ->paginate(2);
+                                                ->paginate(5);
         return view('usuarios.papelera_usu', compact('usuarios','texto'));
     }
     

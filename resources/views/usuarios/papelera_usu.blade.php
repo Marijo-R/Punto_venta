@@ -75,7 +75,7 @@
                             <td class="center">{{$usuario->nombre}} {{$usuario->primer_apellido}}</td>
                             <td class="center">
                               <span tooltip="Clic para reestablecer el registro" flow="left">
-                                <a href="{{  route('recoverUs',$usuario->id ) }}" onclick="return confirm('¿Está de reestablecer el registro?')" class="btn-primary dropdown-toggle btn">
+                                <a href="{{  route('recoverUs',$usuario->id ) }}" onclick="return confirm('¿Está seguro de reestablecer el registro?')" class="btn-primary dropdown-toggle btn">
                                  <i class="fa fa-repeat"></i>
                                 </a>
                               </span>   

@@ -44,7 +44,7 @@
                                 </div>            
                                 <div class="row">
                                     <div class="col s12 m4">
-                                        <label for="num_emp">Número de empleado</label>
+                                        <label for="num_emp">{{ __('Número de empleado') }}</label>
                                         <input  id="num_emp" class="form-control" type="varchar" class="validate" placeholder="Buscar número de empleado" disabled="disabled">
                                     </div>
                                     <div class="col s12 m8">
@@ -67,7 +67,7 @@
                                         <div class="btn-group right">
                                             <span tooltip="Clic para cancelar la operación" flow="left">
                                                 <a href="{{ route('indexUs') }}" onclick="return confirm('¿Está seguro de cancelar la operación?')" class="btn-danger dropdown-toggle btn">
-                                                    <i class="material-icons left">cancel</i>CANCELAR
+                                                    <i class="material-icons left">cancel</i>{{ __('CANCELAR') }}
                                                 </a>
                                             </span>
                                         </div>
@@ -80,8 +80,8 @@
                                         </div>
                                         <div class="btn-group col-sm-3 ">
                                             <span tooltip="Clic para agregar empleado" flow="right">
-                                                <a href="{{ url('/registrar_emp') }}" class="btn-primary dropdown-toggle btn">
-                                                    <i class="material-icons left">work</i>AGREGAR EMPLEADO
+                                                <a href="{{ route('createEmpl') }}" class="btn-primary dropdown-toggle btn">
+                                                    <i class="material-icons left">work</i>{{ __('AGREGAR EMPLEADO')}}
                                                 </a>
                                             </span>
                                         </div>
