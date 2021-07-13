@@ -5,7 +5,7 @@
     <div id="page-wrapper">
         <div class="header">
             <h1 class="page-header">
-                <b>PROVEEDORES</b>
+                <b>PROVEEDORES MORALES</b>
             </h1>
         </div>
 
@@ -18,12 +18,12 @@
                                 <div class=" col-md-12">
                                     <div class="row">
                                         <div class="btn-group col-md-2 right">
-                                            <a href="{{ route('recycleProv') }}" class="btn btn-warning">
+                                            <a href="{{ route('recycleProvMor') }}" class="btn btn-warning">
                                                 <i class="material-icons left">delete_sweep</i>PAPELERA
                                             </a>
                                         </div>
                                         <div class="btn-group col-md-2 right">
-                                            <a href="{{ route('createProv') }}" class="btn btn-success">
+                                            <a href="{{ route('createProvMor') }}" class="btn btn-success">
                                                 <i class="material-icons left">queue</i>REGISTRAR
                                             </a>
                                         </div>
@@ -44,7 +44,7 @@
                                             </div>
                                         </div>
                                         <div class="col-sm-3 right">
-                                            <form action="{{ route('indexProv') }}" method="GET">
+                                            <form action="{{ route('indexProvMor') }}" method="GET">
                                                 <div class="dataTables_length" id="dataTables-example_length">
                                                     <label>
                                                         Buscar
@@ -64,7 +64,6 @@
                                     <thead>
                                         <tr>
                                             <th class="center">No.</th>
-                                            <th class="center">Nombre completo</th>
                                             <th class="center">Razón social</th>
                                             <th class="center">RFC</th>
                                             <th class="center">Teléfono</th>
@@ -81,22 +80,19 @@
                                             @foreach ($proveedores as $proveedor)
                                                 <tr class="odd gradeX">
                                                     <td class="center">{{ $loop->index + 1 }}</td>
-                                                    <td class="center">
-                                                        {{ $proveedor->nombre }}{{ $proveedor->primer_apellido }}
-                                                    </td>
-                                                    <td class="center"></td>
+                                                    <td class="center">{{ $proveedor->razon_social }}</td>
                                                     <td class="center">{{ $proveedor->rfc }}</td>
                                                     <td class="center">{{ $proveedor->telefono }}</td>
-                                                    <td class="center"></td>
+                                                    <td class="center">{{ $proveedor->email }}</td>
                                                     <td class="center" WIDTH="70">
-                                                        <a href="{{ route('editProv', $proveedor->id_proveedor) }}"
+                                                        <a href="{{ route('editProvMor', $proveedor->id_proveedor) }}"
                                                             class="btn-primary dropdown-toggle btn">
                                                             <i class="fa fa-pencil-square"></i>
                                                         </a>
                                                     </td>
                                                     <td class="center" WIDTH="70">
                                                         <form
-                                                            action="{{ route('destroyProv', $proveedor->id_proveedor) }}"
+                                                            action="{{ route('destroyProvMor', $proveedor->id_proveedor) }}"
                                                             method="POST">
                                                             {{ method_field('DELETE') }}
                                                             {{ @csrf_field() }}

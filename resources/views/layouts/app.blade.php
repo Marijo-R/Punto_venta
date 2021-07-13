@@ -83,8 +83,12 @@
                         </ul>
                     </li>
                     <li>
-                        <a href="{{ url('/lista_proveedores') }}" class="waves-effect waves-dark">
-                        <i class="fa fa-truck"></i>Proveedores</a>
+                        <a class="waves-effect waves-dark"><i class="fa fa-truck"></i> Proveedores<span
+                                class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li><a href="{{ url('/lista_proveedores_fis') }}">Proveedores Físicos</a></li>
+                            <li><a href="{{ url('/lista_proveedores_mor') }}">Proveedores Morales</a></li>
+                        </ul>
                     </li>
                     <li>
                         <a class="waves-effect waves-dark"><i class="fa fa-male"></i> Clientes<span
