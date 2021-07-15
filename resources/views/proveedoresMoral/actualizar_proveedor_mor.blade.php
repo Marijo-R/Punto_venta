@@ -13,162 +13,122 @@
                 <div class="col-lg-12">
                     <div class="card">
                         <div class="card-content">
-                            <form class="col s12">
-                                <div><label><strong>TIPO DE CLIENTE</strong></label></div>
+                            <form class="col s12" novalidate method="POST"
+                                action="{{ route('updateProvMor', $proveedor->id_proveedor) }}">
+                                @csrf
+                                @method('PUT')
+                                <div><label><strong>DATOS PERSONALES</strong></label>
+                                </div>
                                 <div class="row">
-                                    <form action="#">
-                                        <p>
-                                            <input name="group1" type="radio" id="check1" checked />
-                                            <label for="check1">Físico</label>
-                                            <input name="group1" type="radio" id="check2" />
-                                            <label for="check2">Moral</label>
-                                        </p>
-                                    </form>
-                                </div>
-                                <div id="fisico" style="display: block;"><label><strong>DATOS PERSONALES</strong></label>
-                                </div>
-                                <div class="row fisico" style="display: block;">
-                                    <div class="col s12 m4 ">
-                                        <label for="nombre" class="form-label">Nombre</label>
-                                        <input type="varchar" class="form-control" name="nombre" id="fisico"
-                                            class="validate" placeholder="Nombre" value="Juan">
-                                    </div>
-                                    <div class="col s12 m4 ">
-                                        <label for="apellido_ap" class="form-label">Primer apellido</label>
-                                        <input type="varchar" class="form-control" id="apellido" class="validate"
-                                            placeholder="Primero apellido" value="Reyes">
-                                    </div>
-                                    <div class="col s12 m4">
-                                        <label for="segundo_ap" class="form-label">Segundo apellido</label>
-                                        <input type="varchar" class="form-control" id="segundo_ap" class="validate"
-                                            placeholder="Segundo apellido" value="Mendez">
-                                    </div>
-                                </div>
-                                <div class="row fisico_cr" style="display: block;">
                                     <div class="col s12 m6">
-                                        <label for="clave"> Clave Única de Registro de Población (CURP)</label>
-                                        <input id="clave" class="form-control" type="varchar" class="validate"
-                                            placeholder="0000000000000" value="REMJ061798MVZA7">
+                                        <label for="clave"> Razón social</label>
+                                        <input class="form-control" type="varchar" name="razon_social" id="razon_social"
+                                            class="validate" placeholder="Razón social" value="{{ $moral->razon_social }}">
                                     </div>
                                     <div class="col s12 m6">
                                         <label for="alias" class="form-label">Registro Federal de Contribuyentes
                                             (RFC)</label>
-                                        <input type="varchar" class="form-control" id="alias" class="validate"
-                                            placeholder="00000000000000" value="REMJ061798A7">
-                                    </div>
-                                </div>
-                                <div id="moral" style="display: none;"><label><strong>DATOS DE LA EMPRESA</strong></label>
-                                </div>
-                                <div class="row moral" style="display: none;">
-                                    <div class="col s12 m6">
-                                        <label for="fecha_nac">Razón social</label>
-                                        <input id="fecha_nac" class="form-control" type="varchar" class="validate"
-                                            placeholder="Razón social">
-                                    </div>
-                                    <div class="col s12 m6">
-                                        <label for="alias" class="form-label">Registro Federal de Contribuyentes
-                                            (RFC)</label>
-                                        <input type="varchar" class="form-control" id="alias" class="validate"
-                                            placeholder="00000000000000">
+                                        <input type="varchar" class="form-control" name="rfc" id="rfc" class="validate"
+                                            placeholder="00000000000000" value="{{ $proveedor->rfc }}">
                                     </div>
                                 </div>
                                 <div><label><strong>DATOS DE CONTACTO</strong></label></div>
                                 <div class="row">
                                     <div class="col s12 m4">
                                         <label for="email" class="form-label">Email</label>
-                                        <input type="varchar" class="form-control" id="email" class="validate"
-                                            placeholder="ejemplo@gmail.com" value="j.reyesM@gmail.com">
+                                        <input type="varchar" class="form-control" name="email" id="email" class="validate"
+                                            placeholder="ejemplo@gmail.com" value="{{ $proveedor->email }}">
                                     </div>
                                     <div class="col s12 m4">
                                         <label for="tipo_num" class="form-label">Tipo</label>
-                                        <select type="varchar" class="form-control">
-                                            <option value="" disabled>Desplega la lista...</option>
-                                            <option value="1">Teléfono</option>
-                                            <option value="2" selected>Celular</option>
+                                        <select type="varchar" class="form-control" name="tipo" id="tipo">
+                                            <option value="" disabled selected>Desplega la lista...</option>
+                                            <option value="Teléfono">Teléfono</option>
+                                            <option value="Celular">Celular</option>
                                         </select>
                                     </div>
                                     <div class="col s12 m4">
                                         <label for="tel">Número</label>
-                                        <input id="tel" class="form-control" type="varchar" class="validate"
-                                            placeholder="0000000000" value="2711348967">
+                                        <input class="form-control" type="varchar" name="telefono" id="telefono"
+                                            class="validate" placeholder="0000000000" value="{{ $telefono->telefono }}">
                                     </div>
                                 </div>
                                 <div><label><strong>DIRECCIÓN</strong></label></div>
                                 <div class="row">
                                     <div class="col s12 m3">
                                         <label for="calle" class="form-label">Calle</label>
-                                        <input type="varchar" class="form-control" id="calle" class="validate"
-                                            placeholder="Calle" value="Aguillon">
+                                        <input type="varchar" class="form-control" name="calle" id="calle" class="validate"
+                                            placeholder="Calle" value="{{ $proveedor->calle }}">
                                     </div>
                                     <div class="col s12 m3">
                                         <label for="entre_cal">Entre calles</label>
-                                        <input id="entre_cal" class="form-control" type="varchar" class="validate"
-                                            placeholder="Entre calles">
-                                    </div>
-                                    <div class="col s12 m3">
-                                        <label for="no_int">Número interior</label>
-                                        <input id="no_int" class="form-control" type="varchar" class="validate"
-                                            placeholder="00">
+                                        <input class="form-control" type="varchar" name="entre_calles" id="entre_calles"
+                                            class="validate" placeholder="Entre calles"
+                                            value="{{ $proveedor->entre_calles }}">
                                     </div>
                                     <div class="col s12 m3">
                                         <label for="no_ext">Número exterior</label>
-                                        <input id="no_ext" class="form-control" type="varchar" class="validate"
-                                            placeholder="00" value="21">
+                                        <input class="form-control" type="varchar" name="no_exterior" id="no_exterior"
+                                            class="validate" placeholder="00" value="{{ $proveedor->no_exterior }}">
+                                    </div>
+                                    <div class="col s12 m3">
+                                        <label for="no_int">Número interior</label>
+                                        <input class="form-control" type="varchar" name="no_interior" id="no_interior"
+                                            class="validate" placeholder="00" value="{{ $proveedor->no_interior }}">
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col s12 m4">
                                         <label for="cod_pos" class="form-label">Código Postal (C.P.)</label>
-                                        <input type="varchar" class="form-control" id="cod_pos" class="validate"
-                                            placeholder="00000" value="94554">
+                                        <input type="varchar" class="form-control" name="cod_postal" id="cod_postal"
+                                            class="validate" placeholder="00000" value="{{ $proveedor->cod_postal }}">
                                     </div>
                                     <div class="col s12 m4">
                                         <label for="colonia">Colonia</label>
-                                        <input type="varchar" id="colonia" class="form-control" class="validate"
-                                            placeholder="" value="L.P">
+                                        <input type="varchar" class="form-control" name="colonia" id="colonia"
+                                            class="validate" placeholder="Colonia" value="{{ $proveedor->colonia }}">
                                     </div>
                                     <div class="col s12 m4">
                                         <label for="local">Localidad</label>
-                                        <input type="varchar" id="local" class="form-control" class="validate"
-                                            placeholder="" value="Córdoba">
+                                        <input type="varchar" class="form-control" name="localidad" id="localidad"
+                                            class="validate" placeholder="Localidad" value="{{ $proveedor->localidad }}">
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col s12 m4">
                                         <label for="ciudad" class="form-label">Ciudad</label>
-                                        <input type="varchar" class="form-control" id="ciudad" class="validate"
-                                            placeholder="" value="Córdoba">
+                                        <input type="varchar" class="form-control" name="ciudad" id="ciudad"
+                                            class="validate" placeholder="Ciudad" value="{{ $proveedor->ciudad }}">
                                     </div>
                                     <div class="col s12 m4">
                                         <label for="estado">Entidad Federativa (estado)</label>
-                                        <input type="varchar" id="estado" class="form-control" class="validate"
-                                            placeholder="" value="Veracruz">
+                                        <input type="varchar" class="form-control" name="entidad_fed" id="entidad_fed"
+                                            class="validate" laceholder="Estado" value="{{ $proveedor->entidad_fed }}">
                                     </div>
                                     <div class="col s12 m4">
                                         <label for="pais">País</label>
-                                        <input type="varchar" id="pais" class="form-control" class="validate" placeholder=""
-                                            value="México">
+                                        <input type="varchar" class="form-control" name="pais" id="pais" class="validate"
+                                            laceholder="Estado" value="{{ $proveedor->pais }}">
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col s12 m12">
                                         <label for="textarea" class="form-label">Comentarios</label>
-                                        <textarea type="varchar" id="textarea" class="form-control validate"
-                                            placeholder="Comentarios..." data-length="255"></textarea>
+                                        <input type="varchar" class="form-control" name="comentarios" id="comentarios"
+                                            class="validate" laceholder="Estado" value="{{ $proveedor->comentarios }}">
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col s12 m11 offset-m1 xl7 offset-xl1 ">
                                         <div class="btn-group right">
-                                            <a href="{{ route('proveedor') }}" class="btn-danger dropdown-toggle btn">
+                                            <a href="{{ route('indexProvMor') }}" class="btn-danger dropdown-toggle btn">
                                                 <i class="material-icons left">cancel</i>CANCELAR
                                             </a>
                                         </div>
                                         <div class="btn-group col-sm-2 right">
-                                            <a onclick="Alertabtn()" href="{{ route('proveedor') }}"
-                                                class="btn btn-success">
-                                                <i class="material-icons left">check_circle</i>GUARDAR
-                                            </a>
+                                            <button type="submit" class="btn btn-success" value="Guardar">
+                                                <i class="material-icons left">check_circle</i>Guardar
+                                            </button>
                                         </div>
                                     </div>
                                 </div>
@@ -179,6 +139,7 @@
                 </div>
             </div>
         </div>
+
     </div>
 
 @endsection

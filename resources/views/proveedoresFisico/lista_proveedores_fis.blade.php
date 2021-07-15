@@ -66,6 +66,7 @@
                                             <th class="center">No.</th>
                                             <th class="center">Nombre completo</th>
                                             <th class="center">RFC</th>
+                                            <th class="center">CURP</th>
                                             <th class="center">Teléfono</th>
                                             <th class="center">Email</th>
                                             <th class="center" scope="col" colspan="3">Opciones</th>
@@ -84,6 +85,7 @@
                                                         {{ $proveedor->nombre }} {{ $proveedor->primer_apellido }}
                                                     </td>
                                                     <td class="center">{{ $proveedor->rfc }}</td>
+                                                    <td class="center">{{ $proveedor->curp }}</td>
                                                     <td class="center">{{ $proveedor->telefono }}</td>
                                                     <td class="center">{{ $proveedor->email }}</td>
                                                     <td class="center" WIDTH="70">
@@ -139,7 +141,7 @@
                                                                                                     class="form-control validate"
                                                                                                     id="email"
                                                                                                     disabled="disabled"
-                                                                                                    placeholder="evemi1110@gmail.com">
+                                                                                                    value="{{ $proveedor->email}}">
                                                                                             </div>
                                                                                         </div>
                                                                                         <div class="row">
@@ -152,7 +154,7 @@
                                                                                                     id="tel"
                                                                                                     class="form-control validate"
                                                                                                     disabled="disabled"
-                                                                                                    placeholder="2721478987">
+                                                                                                    value="{{ $proveedor->telefono}}">
                                                                                             </div>
                                                                                         </div>
                                                                                         <div class="center">
@@ -168,7 +170,7 @@
                                                                                                     class="form-control validate"
                                                                                                     id="calle"
                                                                                                     disabled="disabled"
-                                                                                                    placeholder="Avenida San Juan">
+                                                                                                    value="{{ $proveedor->calle}}">
                                                                                             </div>
                                                                                         </div>
                                                                                         <div class="row">
@@ -181,20 +183,7 @@
                                                                                                     id="entre_cal"
                                                                                                     class="form-control validate"
                                                                                                     disabled="disabled"
-                                                                                                    placeholder="Mezón y Guadalupe">
-                                                                                            </div>
-                                                                                        </div>
-                                                                                        <div class="row">
-                                                                                            <div class="col s12 m6">
-                                                                                                <label for="no_int">Número
-                                                                                                    interior</label>
-                                                                                            </div>
-                                                                                            <div class="col s12 m6">
-                                                                                                <input type="varchar"
-                                                                                                    id="no_int"
-                                                                                                    class="form-control validate"
-                                                                                                    disabled="disabled"
-                                                                                                    placeholder="18">
+                                                                                                    value="{{ $proveedor->entre_calles}}">
                                                                                             </div>
                                                                                         </div>
                                                                                         <div class="row">
@@ -207,7 +196,20 @@
                                                                                                     id="no_ext"
                                                                                                     class="form-control validate"
                                                                                                     disabled="disabled"
-                                                                                                    placeholder="12">
+                                                                                                    value="{{ $proveedor->no_exterior}}">
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="row">
+                                                                                            <div class="col s12 m6">
+                                                                                                <label for="no_int">Número
+                                                                                                    interior</label>
+                                                                                            </div>
+                                                                                            <div class="col s12 m6">
+                                                                                                <input type="varchar"
+                                                                                                    id="no_int"
+                                                                                                    class="form-control validate"
+                                                                                                    disabled="disabled"
+                                                                                                    value="{{ $proveedor->no_interior}}">
                                                                                             </div>
                                                                                         </div>
                                                                                         <div class="row">
@@ -221,7 +223,7 @@
                                                                                                     class="form-control validate"
                                                                                                     id="cod_pos"
                                                                                                     disabled="disabled"
-                                                                                                    placeholder="94760">
+                                                                                                    value="{{ $proveedor->cod_postal}}">
                                                                                             </div>
                                                                                         </div>
                                                                                         <div class="row">
@@ -234,7 +236,7 @@
                                                                                                     id="colonia"
                                                                                                     class="form-control validate"
                                                                                                     disabled="disabled"
-                                                                                                    placeholder="Centro">
+                                                                                                    value="{{ $proveedor->colonia}}">
                                                                                             </div>
                                                                                         </div>
                                                                                         <div class="row">
@@ -247,7 +249,7 @@
                                                                                                     id="local"
                                                                                                     class="form-control validate"
                                                                                                     disabled="disabled"
-                                                                                                    placeholder="Acultzingo">
+                                                                                                    value="{{ $proveedor->localidad}}">
                                                                                             </div>
                                                                                         </div>
                                                                                         <div class="row">
@@ -260,7 +262,7 @@
                                                                                                     class="form-control validate"
                                                                                                     id="ciudad"
                                                                                                     disabled="disabled"
-                                                                                                    placeholder="Acultzingo">
+                                                                                                    value="{{ $proveedor->ciudad}}">
                                                                                             </div>
                                                                                         </div>
                                                                                         <div class="row">
@@ -274,7 +276,7 @@
                                                                                                     id="estado"
                                                                                                     class="form-control validate"
                                                                                                     disabled="disabled"
-                                                                                                    placeholder="Veracruz">
+                                                                                                    value="{{ $proveedor->entidad_fed}}">
                                                                                             </div>
                                                                                         </div>
                                                                                         <div class="row">
@@ -287,7 +289,7 @@
                                                                                                     id="pais"
                                                                                                     class="form-control validate"
                                                                                                     disabled="disabled"
-                                                                                                    placeholder="México">
+                                                                                                    value="{{ $proveedor->pais}}">
                                                                                             </div>
                                                                                         </div>
                                                                                         <div class="row">
@@ -300,7 +302,7 @@
                                                                                                     id="pais"
                                                                                                     class="form-control validate"
                                                                                                     disabled="disabled"
-                                                                                                    placeholder="Comentarios">
+                                                                                                    value="{{ $proveedor->comentarios}}">
                                                                                             </div>
                                                                                         </div>
                                                                                     </form>

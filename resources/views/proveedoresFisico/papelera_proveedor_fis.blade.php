@@ -38,16 +38,19 @@
                                             </div>
                                         </div>
                                         <div class="col-sm-3 right">
-                                            <div class="dataTables_length" id="dataTables-example_length">
-                                                <label>
-                                                    Buscar
-                                                    <input type="search" class="form-control input-sm"
-                                                        aria-controls="dataTables-example">
-                                                </label>
-                                                <button type="submit" class="btn btn-default">
-                                                    <span class="glyphicon glyphicon-search"></span>
-                                                </button>
-                                            </div>
+                                            <form action="{{ route('recycleProvFis') }}" method="GET">
+                                                <div class="dataTables_length" id="dataTables-example_length">
+                                                    <label>
+                                                        Buscar
+                                                        <input type="text" name="texto" value="{{ $texto }}"
+                                                            class="form-control input-sm"
+                                                            aria-controls="dataTables-example">
+                                                    </label>
+                                                    <button type="submit" class="btn btn-default" value="Buscar">
+                                                        <span class="glyphicon glyphicon-search"></span>
+                                                    </button>
+                                                </div>
+                                            </form>
                                         </div>
                                     </div>
                                 </div>
