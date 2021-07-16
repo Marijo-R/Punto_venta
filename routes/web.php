@@ -100,6 +100,16 @@ Route::delete('/eliminar_proveedor_fis/{id_proveedor}', [ProveedorFisController:
 Route::get('/papelera_proveedor_fis', [ProveedorFisController::class, 'recycle'])->name('recycleProvFis')->middleware('auth');
 Route::get('/recuperar_proveedor_fis/{id_proveedor}', [ProveedorFisController::class, 'recover'])->name('recoverProvFis')->middleware('auth');
 
+//CRUD - Proveedor Fisico
+Route::get('/lista_proveedores_fis', [ProveedorFisController::class, 'index'])->name('indexProvFis')->middleware('auth');
+Route::get('/registrar_proveedor_fis', [ProveedorFisController::class, 'create'])->name('createProvFis')->middleware('auth');
+Route::post('/registrar_proveedor_fis', [ProveedorFisController::class, 'store'])->name('storeProvFis')->middleware('auth');
+Route::get('/actualizar_proveedor_fis/{id_proveedor}', [ProveedorFisController::class, 'edit'])->name('editProvFis')->middleware('auth');
+Route::put('/actualizar_proveedor_fis/update/{id_proveedor}', [ProveedorFisController::class, 'update'])->name('updateProvFis')->middleware('auth');
+Route::delete('/eliminar_proveedor_fis/{id_proveedor}', [ProveedorFisController::class, 'destroy'])->name('destroyProvFis')->middleware('auth');
+Route::get('/papelera_proveedor_fis', [ProveedorFisController::class, 'recycle'])->name('recycleProvFis')->middleware('auth');
+Route::get('/recuperar_proveedor_fis/{id_proveedor}', [ProveedorFisController::class, 'recover'])->name('recoverProvFis')->middleware('auth');
+
 //CRUD - Proveedor Moral
 Route::get('/lista_proveedores_mor', [ProveedorMorController::class, 'index'])->name('indexProvMor')->middleware('auth');
 Route::get('/registrar_proveedor_mor', [ProveedorMorController::class, 'create'])->name('createProvMor')->middleware('auth');
