@@ -9,6 +9,8 @@ use App\Models\Moral;
 use App\Models\Telefono;
 use App\Models\TelefonoProveedor;
 use Illuminate\Support\Facades\DB;
+use App\Http\Requests\proveedorMorCreateRequest;
+use App\Http\Requests\proveedorMorEditRequest;
 
 class ProveedorMorController extends Controller
 {
@@ -50,7 +52,7 @@ class ProveedorMorController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(proveedorMorCreateRequest $request)
     {
         $moral = new Moral;
         $moral->razon_social = $request->input('razon_social');
@@ -134,7 +136,7 @@ class ProveedorMorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id_proveedor)
+    public function update(proveedorMorEditRequest $request, $id_proveedor)
     {
         $id_moral = ProveedorMoral::select('id_moral')->where('id_proveedor', '=', $id_proveedor)->get();
         $moral = Moral::findOrFail($id_moral)->first();

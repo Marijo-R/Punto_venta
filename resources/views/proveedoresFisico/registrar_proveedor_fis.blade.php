@@ -15,134 +15,235 @@
                         <div class="card-content">
                             <form class="col s12" novalidate method="POST" action="{{ route('storeProvFis') }}">
                                 @csrf
-                                <div><label><strong>DATOS PERSONALES</strong></label>
-                                </div>
+                                <div><label><strong>DATOS PERSONALES</strong></label></div>
                                 <div class="row">
                                     <div class="col s12 m4 ">
                                         <label for="nombre" class="form-label">Nombre</label>
-                                        <input type="varchar" class="form-control" name="nombre" id="nombre"
-                                            class="validate" placeholder="Nombre">
+                                        <input type="varchar" class="form-control validate" id="nombre" name="nombre"
+                                            placeholder="Nombre">
+                                        @if ($errors->has('nombre'))
+                                            <span class="error text-danger">
+                                                {{ $errors->first('nombre') }}
+                                            </span>
+                                        @endif
                                     </div>
                                     <div class="col s12 m4 ">
                                         <label for="apellido_ap" class="form-label">Primer apellido</label>
-                                        <input type="varchar" class="form-control" name="primer_apellido" id="primer_apellido" 
-                                            class="validate" placeholder="Primero apellido">
+                                        <input type="varchar" class="form-control validate" id="primer_apellido"
+                                            name="primer_apellido" placeholder="Primer apellido">
+                                        @if ($errors->has('primer_apellido'))
+                                            <span class="error text-danger">
+                                                {{ $errors->first('primer_apellido') }}
+                                            </span>
+                                        @endif
                                     </div>
                                     <div class="col s12 m4">
                                         <label for="segundo_ap" class="form-label">Segundo apellido</label>
-                                        <input type="varchar" class="form-control" name="segundo_apellido" id="segundo_apellido"
-                                            class="validate" placeholder="Segundo apellido">
+                                        <input type="varchar" class="form-control validate" id="segundo_apellido"
+                                            name="segundo_apellido" placeholder="Segundo apellido">
+                                        @if ($errors->has('segundo_apellido'))
+                                            <span class="error text-danger">
+                                                {{ $errors->first('segundo_apellido') }}
+                                            </span>
+                                        @endif
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col s12 m6">
-                                        <label for="clave"> Clave Única de Registro de Población (CURP)</label>
-                                        <input class="form-control" type="varchar" name="curp" id="curp"
-                                            class="validate" placeholder="0000000000000">
+                                        <label for="clave">
+                                            Clave Única de Registro de Población (CURP)</label>
+                                        <input type="char" id="curp" name="curp" class="form-control validate"
+                                            placeholder="CAPL951007HVZNRVA2">
+                                        @if ($errors->has('curp'))
+                                            <span class="error text-danger">
+                                                {{ $errors->first('curp') }}
+                                            </span>
+                                        @endif
                                     </div>
                                     <div class="col s12 m6">
-                                        <label for="alias" class="form-label">Registro Federal de Contribuyentes
-                                            (RFC)</label>
-                                        <input type="varchar" class="form-control" name="rfc" id="rfc"
-                                            class="validate" placeholder="00000000000000">
+                                        <label for="rfc"
+                                            class="form-label">Registro Federal de Contribuyentes (RFC)</label>
+                                        <input type="varchar" id="rfc" name="rfc" class="form-control validate"
+                                            placeholder="PECL951007FD5">
+                                        @if ($errors->has('rfc'))
+                                            <span class="error text-danger">
+                                                {{ $errors->first('rfc') }}
+                                            </span>
+                                        @endif
                                     </div>
                                 </div>
                                 <div><label><strong>DATOS DE CONTACTO</strong></label></div>
                                 <div class="row">
                                     <div class="col s12 m4">
-                                        <label for="email" class="form-label">Email</label>
-                                        <input type="varchar" class="form-control" name="email" id="email"
-                                            class="validate" placeholder="ejemplo@gmail.com">
+                                        <label for="email" class="form-label">Correo Electrónico</label>
+                                        <input type="varchar" class="form-control validate" id="email" name="email"
+                                            placeholder="ejemplo@gmail.com">
+                                        @if ($errors->has('email'))
+                                            <span class="error text-danger">
+                                                {{ $errors->first('email') }}
+                                            </span>
+                                        @endif
                                     </div>
                                     <div class="col s12 m4">
                                         <label for="tipo_num" class="form-label">Tipo</label>
-                                        <select type="varchar" class="form-control" name="tipo" id="tipo">
+                                        <select id="tipo" name="tipo" type="varchar" class="form-control">
                                             <option value="" disabled selected>Desplega la lista...</option>
                                             <option value="Teléfono">Teléfono</option>
                                             <option value="Celular">Celular</option>
                                         </select>
+                                        @if ($errors->has('tipo'))
+                                            <span class="error text-danger">
+                                                {{ $errors->first('tipo') }}
+                                            </span>
+                                        @endif
                                     </div>
                                     <div class="col s12 m4">
                                         <label for="tel">Número</label>
-                                        <input class="form-control" type="varchar" name="telefono" id="telefono"
-                                            class="validate" placeholder="0000000000">
+                                        <input type="varchar" id="telefono" name="telefono" class="form-control validate"
+                                            placeholder="0000000000">
+                                        @if ($errors->has('telefono'))
+                                            <span class="error text-danger">
+                                                {{ $errors->first('telefono') }}
+                                            </span>
+                                        @endif
                                     </div>
                                 </div>
                                 <div><label><strong>DIRECCIÓN</strong></label></div>
                                 <div class="row">
                                     <div class="col s12 m3">
                                         <label for="calle" class="form-label">Calle</label>
-                                        <input type="varchar" class="form-control" name="calle" id="calle"
-                                            class="validate" placeholder="Calle">
+                                        <input type="varchar" class="form-control validate" id="calle" name="calle"
+                                            placeholder="Calle">
+                                        @if ($errors->has('calle'))
+                                            <span class="error text-danger">
+                                                {{ $errors->first('calle') }}
+                                            </span>
+                                        @endif
                                     </div>
                                     <div class="col s12 m3">
                                         <label for="entre_cal">Entre calles</label>
-                                        <input class="form-control" type="varchar" name="entre_calles" id="entre_calles"
-                                            class="validate" placeholder="Entre calles">
+                                        <input type="varchar" id="entre_calles" name="entre_calles"
+                                            class="form-control validate" placeholder="Entre calles">
+                                        @if ($errors->has('entre_calles'))
+                                            <span class="error text-danger">
+                                                {{ $errors->first('entre_calles') }}
+                                            </span>
+                                        @endif
                                     </div>
                                     <div class="col s12 m3">
                                         <label for="no_ext">Número exterior</label>
-                                        <input class="form-control" type="varchar" name="no_exterior" id="no_exterior"
-                                            class="validate" placeholder="00">
+                                        <input type="varchar" id="no_exterior" name="no_exterior"
+                                            class="form-control validate" placeholder="0">
+                                        @if ($errors->has('no_exterior'))
+                                            <span class="error text-danger">
+                                                {{ $errors->first('no_exterior') }}
+                                            </span>
+                                        @endif
                                     </div>
                                     <div class="col s12 m3">
                                         <label for="no_int">Número interior</label>
-                                        <input class="form-control" type="varchar" name="no_interior" id="no_interior"
-                                            class="validate" placeholder="00">
+                                        <input type="varchar" id="no_interior" name="no_interior"
+                                            class="form-control validate" placeholder="0">
+                                        @if ($errors->has('no_interior'))
+                                            <span class="error text-danger">
+                                                {{ $errors->first('no_interior') }}
+                                            </span>
+                                        @endif
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col s12 m4">
                                         <label for="cod_pos" class="form-label">Código Postal (C.P.)</label>
-                                        <input type="varchar" class="form-control" name="cod_postal" id="cod_postal"
-                                            class="validate" placeholder="00000">
+                                        <input type="varchar" class="form-control validate" id="cod_postal"
+                                            name="cod_postal" placeholder="00000">
+                                        @if ($errors->has('cod_postal'))
+                                            <span class="error text-danger">
+                                                {{ $errors->first('cod_postal') }}
+                                            </span>
+                                        @endif
                                     </div>
                                     <div class="col s12 m4">
                                         <label for="colonia">Colonia</label>
-                                        <input type="varchar" class="form-control" name="colonia" id="colonia"
-                                            class="validate" placeholder="Colonia">
+                                        <input type="varchar" id="colonia" class="form-control validate" name="colonia"
+                                            placeholder="Colonia">
+                                        @if ($errors->has('colonia'))
+                                            <span class="error text-danger">
+                                                {{ $errors->first('colonia') }}
+                                            </span>
+                                        @endif
                                     </div>
                                     <div class="col s12 m4">
                                         <label for="local">Localidad</label>
-                                        <input type="varchar" class="form-control" name="localidad" id="localidad"
-                                            class="validate" placeholder="Localidad">
+                                        <input type="varchar" id="localidad" class="form-control validate" name="localidad"
+                                            placeholder="Localidad">
+                                        @if ($errors->has('localidad'))
+                                            <span class="error text-danger">
+                                                {{ $errors->first('localidad') }}
+                                            </span>
+                                        @endif
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col s12 m4">
                                         <label for="ciudad" class="form-label">Ciudad</label>
-                                        <input type="varchar" class="form-control" name="ciudad" id="ciudad"
-                                            class="validate" placeholder="Ciudad">
+                                        <input type="varchar" id="ciudad" class="form-control validate" name="ciudad"
+                                            placeholder="Ciudad">
+                                        @if ($errors->has('ciudad'))
+                                            <span class="error text-danger">
+                                                {{ $errors->first('ciudad') }}
+                                            </span>
+                                        @endif
                                     </div>
                                     <div class="col s12 m4">
                                         <label for="estado">Entidad Federativa (estado)</label>
-                                        <input type="varchar" class="form-control" name="entidad_fed" id="entidad_fed"
-                                            class="validate" laceholder="Estado">
+                                        <input type="varchar" id="entidad_fed" name="entidad_fed"
+                                            class="form-control validate" placeholder="Estado">
+                                        @if ($errors->has('entidad_fed'))
+                                            <span class="error text-danger">
+                                                {{ $errors->first('entidad_fed') }}
+                                            </span>
+                                        @endif
                                     </div>
                                     <div class="col s12 m4">
                                         <label for="pais">País</label>
-                                        <input type="varchar"class="form-control" name="pais" id="pais"
-                                        class="validate" laceholder="Estado">
+                                        <input type="varchar" id="pais" name="pais" class="form-control validate"
+                                            placeholder="País">
+                                        @if ($errors->has('pais'))
+                                            <span class="error text-danger">
+                                                {{ $errors->first('pais') }}
+                                            </span>
+                                        @endif
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col s12 m12">
                                         <label for="textarea" class="form-label">Comentarios</label>
-                                        <textarea type="varchar" class="form-control validate" name="comentarios" id="comentarios"
-                                            placeholder="Comentarios..." data-length="255"></textarea>
+                                        <input type="varchar" class="form-control" name="comentarios" id="comentarios"
+                                            class="validate" placeholder="Comentarios">
+                                        @if($errors->has('comentarios'))
+                                            <span class="error text-danger">
+                                                {{$errors->first('comentarios')}}
+                                            </span>
+                                        @endif
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col s12 m11 offset-m1 xl7 offset-xl1 ">
                                         <div class="btn-group right">
-                                            <a href="{{ route('indexProvFis') }}" class="btn-danger dropdown-toggle btn">
-                                                <i class="material-icons left">cancel</i>CANCELAR
-                                            </a>
+                                            <span tooltip="Clic para cancelar la operación" flow="left">
+                                                <a href="{{ route('indexProvFis') }}" onclick="return confirm('¿Está seguro de cancelar la operación?')" 
+                                                    class="btn-danger dropdown-toggle btn">
+                                                    <i class="material-icons left">cancel</i>{{ __('CANCELAR') }}
+                                                </a>
+                                            </span>
                                         </div>
                                         <div class="btn-group col-sm-2 right">
-                                            <button type="submit" class="btn btn-success" value="Guardar">
-                                                <i class="material-icons left">check_circle</i>Guardar
-                                            </button>
+                                            <span tooltip="Clic para guardar la información" flow="left">
+                                                <button onclick="return confirm('¿Está seguro de guardar el nuevo registro de proveedor?')" 
+                                                        type="submit" class="btn btn-success" value="Guardar">
+                                                    <i class="material-icons left">check_circle</i>{{ __('GUARDAR') }}
+                                                </button>
+                                            </span>
                                         </div>
                                     </div>
                                 </div>

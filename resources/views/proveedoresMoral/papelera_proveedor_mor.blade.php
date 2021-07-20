@@ -16,13 +16,13 @@
                         <div class="card-content">
                             <div class="table-responsive">
                                 <div class=" col-md-12">
-                                  <div class="row">
-                                    <div class="btn-group col-md-2 right">
-                                        <a href="{{ route('indexProvMor') }}" class="btn btn-warning">
-                                            <i class="material-icons left">arrow_back</i>REGRESAR
-                                        </a>
+                                    <div class="row">
+                                        <div class="btn-group col-md-2 right">
+                                            <a href="{{ route('indexProvMor') }}" class="btn btn-warning">
+                                                <i class="material-icons left">arrow_back</i>REGRESAR
+                                            </a>
+                                        </div>
                                     </div>
-                                </div>
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="dataTables_length" id="dataTables-example_length">
@@ -42,9 +42,8 @@
                                             <form action="{{ route('recycleProvMor') }}" method="GET">
                                                 <div class="dataTables_length" id="dataTables-example_length">
                                                     <label>
-                                                        Buscar
-                                                        <input type="text" name="texto" value="{{ $texto }}"
-                                                            class="form-control input-sm"
+                                                        <input type="varchar" name="texto" value="{{ $texto }}"
+                                                            class="form-control input-sm" placeholder="Buscar"
                                                             aria-controls="dataTables-example">
                                                     </label>
                                                     <button type="submit" class="btn btn-default" value="Buscar">
@@ -80,30 +79,32 @@
                                                     <td class="center">{{ $proveedor->telefono }}</td>
                                                     <td class="center">{{ $proveedor->email }}</td>
                                                     <td class="center">
-                                                      <a onclick="Alertabtn()">
-                                                          <button
-                                                              onclick="location.href='{{ route('recoverProvMor', $proveedor->id_proveedor) }}'"
-                                                              type="submit" class="btn-primary dropdown-toggle btn"><i
-                                                                  class="fa fa-repeat"></i></button>
-                                                      </a>
-                                                  </td>
+                                                        <a onclick="Alertabtn()">
+                                                            <button
+                                                                onclick="location.href='{{ route('recoverProvMor', $proveedor->id_proveedor) }}'"
+                                                                type="submit" class="btn-primary dropdown-toggle btn"><i
+                                                                    class="fa fa-repeat"></i></button>
+                                                        </a>
+                                                    </td>
                                                 </tr>
                                             @endforeach
                                         @endif
                                     </tbody>
                                 </table>
-                                 
+
                                 <div class="row">
                                     <div class="col-sm-6">
-                                    <div class="dataTables_info" id="dataTables-example_info" role="alert" aria-live="polite" aria-relevant="all">
-                                        Mostrando {{$proveedores->count()}} a {{$proveedores->lastItem()}} de {{$proveedores->total()}} entradas
-                                    </div>
+                                        <div class="dataTables_info" id="dataTables-example_info" role="alert"
+                                            aria-live="polite" aria-relevant="all">
+                                            Mostrando {{ $proveedores->count() }} de {{ $proveedores->total() }}
+                                            entradas
+                                        </div>
                                     </div>
 
                                     <div class="col-sm-4 right">
-                                    <div>
-                                        {{ $proveedores->links('vendor.pagination.default') }}
-                                    </div>
+                                        <div>
+                                            {{ $proveedores->links('vendor.pagination.default') }}
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -113,3 +114,5 @@
             </div>
         </div>
     </div>
+
+@endsection

@@ -41,9 +41,8 @@
                                             <form action="{{ route('recycleProvFis') }}" method="GET">
                                                 <div class="dataTables_length" id="dataTables-example_length">
                                                     <label>
-                                                        Buscar
-                                                        <input type="text" name="texto" value="{{ $texto }}"
-                                                            class="form-control input-sm"
+                                                        <input type="varchar" name="texto" value="{{ $texto }}"
+                                                            class="form-control input-sm" placeholder="Buscar"
                                                             aria-controls="dataTables-example">
                                                     </label>
                                                     <button type="submit" class="btn btn-default" value="Buscar">
@@ -93,33 +92,17 @@
                                         @endif
                                     </tbody>
                                 </table>
-
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <div class="dataTables_info" id="dataTables-example_info" role="alert"
                                             aria-live="polite" aria-relevant="all">
-                                            Mostrando 1 a 4 de 4 entradas
+                                            Mostrando {{ $proveedores->count() }} de {{ $proveedores->total() }} entradas
                                         </div>
                                     </div>
 
-                                    <div class="col-sm-3 right">
+                                    <div class="col-sm-4 right">
                                         <div>
-                                            <ul class="pagination">
-                                                <li class="paginate_button previous disabled">
-                                                    <a href="#">Anterior</a>
-                                                </li>
-                                                <li class="paginate_button previous disabled"
-                                                    aria-controls="dataTables-example" tabindex="0">
-                                                    <a href="#">1</a>
-                                                </li>
-                                                <li class="paginate_button previous disabled"
-                                                    aria-controls="dataTables-example" tabindex="0">
-                                                    <a href="#">2</a>
-                                                </li>
-                                                <li class="paginate_button previous disabled">
-                                                    <a href="#">Siguiente</a>
-                                                </li>
-                                            </ul>
+                                            {{ $proveedores->links('vendor.pagination.default') }}
                                         </div>
                                     </div>
                                 </div>
@@ -130,3 +113,6 @@
             </div>
         </div>
     </div>
+
+
+@endsection

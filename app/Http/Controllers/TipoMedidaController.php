@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\TipoMedida;
 use Illuminate\Support\Facades\DB;
+use App\Http\Requests\tipoMedidaCreateRequest;
+use App\Http\Requests\tipoMedidaEditRequest;
 
 class TipoMedidaController extends Controller
 {
@@ -16,7 +18,6 @@ class TipoMedidaController extends Controller
     public function index(Request $request)
     {
         $texto = trim($request->get('texto'));
-        //$medidas = TipoMedida::all();
         $medidas = DB::table('tipo_medida')->select('id_medida','unidad_medida','simbolo', 'estatus')
                                            ->where('estatus', '=', 1)
                                            ->where(function ($query) use ($texto) {
@@ -44,7 +45,7 @@ class TipoMedidaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(tipoMedidaCreateRequest $request)
     {
         $medida = new TipoMedida;
         $medida->unidad_medida = $request->input('unidad_medida');
@@ -84,7 +85,7 @@ class TipoMedidaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id_medida)
+    public function update(tipoMedidaEditRequest $request, $id_medida)
     {
         $medida = TipoMedida::findOrFail($id_medida);
         $medida->unidad_medida = $request->input('unidad_medida');

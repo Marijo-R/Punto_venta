@@ -287,7 +287,7 @@
                             <div class="row">
                                 <div class="col-sm-6">
                                     <div class="dataTables_info" id="dataTables-example_info" role="alert" aria-live="polite" aria-relevant="all">
-                                        Mostrando {{$empleados->firstItem()}} a {{$empleados->lastItem()}} de {{$empleados->total()}} entradas
+                                        Mostrando {{$empleados->count()}} a {{$empleados->lastItem()}} de {{$empleados->total()}} entradas
                                     </div>
                                 </div>
 

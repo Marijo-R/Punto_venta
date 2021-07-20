@@ -47,9 +47,8 @@
                                             <form action="{{ route('indexProvFis') }}" method="GET">
                                                 <div class="dataTables_length" id="dataTables-example_length">
                                                     <label>
-                                                        Buscar
-                                                        <input type="text" name="texto" value="{{ $texto }}"
-                                                            class="form-control input-sm"
+                                                        <input type="varchar" name="texto" value="{{ $texto }}"
+                                                            class="form-control input-sm" placeholder="Buscar"
                                                             aria-controls="dataTables-example">
                                                     </label>
                                                     <button type="submit" class="btn btn-default" value="Buscar">
@@ -100,9 +99,8 @@
                                                             method="POST">
                                                             {{ method_field('DELETE') }}
                                                             {{ @csrf_field() }}
-                                                            <button type="submit"
-                                                                onclick="return confirm('¿Esta seguro de eliminar?')"
-                                                                class="btn btn-danger">
+                                                            <button type="submit" class="btn btn-danger"
+                                                                onclick="return confirm('El registro no estará disponible para operaciones en el sistema, para reestablecerlo deberá hacerlo desde papelera.')">
                                                                 <i class="fa fa-trash-o"></i>
                                                             </button>
                                                         </form>
@@ -115,9 +113,9 @@
                                                     </td>
                                                 </tr>
                                                 <!-- Modal de empleados-->
-                                                <div class="modal fade" id="modalproveedor-{{ $proveedor->id_proveedor }}"
-                                                    tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-                                                    aria-hidden="true">
+                                                <div class="modal fade"
+                                                    id="modalproveedor-{{ $proveedor->id_proveedor }}" tabindex="-1"
+                                                    role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                     <div role="document">
                                                         <div class="modal-content">
                                                             <div class="modal-body">
@@ -141,7 +139,7 @@
                                                                                                     class="form-control validate"
                                                                                                     id="email"
                                                                                                     disabled="disabled"
-                                                                                                    value="{{ $proveedor->email}}">
+                                                                                                    value="{{ $proveedor->email }}">
                                                                                             </div>
                                                                                         </div>
                                                                                         <div class="row">
@@ -154,7 +152,7 @@
                                                                                                     id="tel"
                                                                                                     class="form-control validate"
                                                                                                     disabled="disabled"
-                                                                                                    value="{{ $proveedor->telefono}}">
+                                                                                                    value="{{ $proveedor->telefono }}">
                                                                                             </div>
                                                                                         </div>
                                                                                         <div class="center">
@@ -170,7 +168,7 @@
                                                                                                     class="form-control validate"
                                                                                                     id="calle"
                                                                                                     disabled="disabled"
-                                                                                                    value="{{ $proveedor->calle}}">
+                                                                                                    value="{{ $proveedor->calle }}">
                                                                                             </div>
                                                                                         </div>
                                                                                         <div class="row">
@@ -183,7 +181,7 @@
                                                                                                     id="entre_cal"
                                                                                                     class="form-control validate"
                                                                                                     disabled="disabled"
-                                                                                                    value="{{ $proveedor->entre_calles}}">
+                                                                                                    value="{{ $proveedor->entre_calles }}">
                                                                                             </div>
                                                                                         </div>
                                                                                         <div class="row">
@@ -196,7 +194,7 @@
                                                                                                     id="no_ext"
                                                                                                     class="form-control validate"
                                                                                                     disabled="disabled"
-                                                                                                    value="{{ $proveedor->no_exterior}}">
+                                                                                                    value="{{ $proveedor->no_exterior }}">
                                                                                             </div>
                                                                                         </div>
                                                                                         <div class="row">
@@ -209,7 +207,7 @@
                                                                                                     id="no_int"
                                                                                                     class="form-control validate"
                                                                                                     disabled="disabled"
-                                                                                                    value="{{ $proveedor->no_interior}}">
+                                                                                                    value="{{ $proveedor->no_interior }}">
                                                                                             </div>
                                                                                         </div>
                                                                                         <div class="row">
@@ -223,7 +221,7 @@
                                                                                                     class="form-control validate"
                                                                                                     id="cod_pos"
                                                                                                     disabled="disabled"
-                                                                                                    value="{{ $proveedor->cod_postal}}">
+                                                                                                    value="{{ $proveedor->cod_postal }}">
                                                                                             </div>
                                                                                         </div>
                                                                                         <div class="row">
@@ -236,7 +234,7 @@
                                                                                                     id="colonia"
                                                                                                     class="form-control validate"
                                                                                                     disabled="disabled"
-                                                                                                    value="{{ $proveedor->colonia}}">
+                                                                                                    value="{{ $proveedor->colonia }}">
                                                                                             </div>
                                                                                         </div>
                                                                                         <div class="row">
@@ -249,7 +247,7 @@
                                                                                                     id="local"
                                                                                                     class="form-control validate"
                                                                                                     disabled="disabled"
-                                                                                                    value="{{ $proveedor->localidad}}">
+                                                                                                    value="{{ $proveedor->localidad }}">
                                                                                             </div>
                                                                                         </div>
                                                                                         <div class="row">
@@ -262,7 +260,7 @@
                                                                                                     class="form-control validate"
                                                                                                     id="ciudad"
                                                                                                     disabled="disabled"
-                                                                                                    value="{{ $proveedor->ciudad}}">
+                                                                                                    value="{{ $proveedor->ciudad }}">
                                                                                             </div>
                                                                                         </div>
                                                                                         <div class="row">
@@ -276,7 +274,7 @@
                                                                                                     id="estado"
                                                                                                     class="form-control validate"
                                                                                                     disabled="disabled"
-                                                                                                    value="{{ $proveedor->entidad_fed}}">
+                                                                                                    value="{{ $proveedor->entidad_fed }}">
                                                                                             </div>
                                                                                         </div>
                                                                                         <div class="row">
@@ -289,7 +287,7 @@
                                                                                                     id="pais"
                                                                                                     class="form-control validate"
                                                                                                     disabled="disabled"
-                                                                                                    value="{{ $proveedor->pais}}">
+                                                                                                    value="{{ $proveedor->pais }}">
                                                                                             </div>
                                                                                         </div>
                                                                                         <div class="row">
@@ -302,7 +300,7 @@
                                                                                                     id="pais"
                                                                                                     class="form-control validate"
                                                                                                     disabled="disabled"
-                                                                                                    value="{{ $proveedor->comentarios}}">
+                                                                                                    value="{{ $proveedor->comentarios }}">
                                                                                             </div>
                                                                                         </div>
                                                                                     </form>
@@ -326,18 +324,18 @@
                                         @endif
                                     </tbody>
                                 </table>
-                                 
                                 <div class="row">
                                     <div class="col-sm-6">
-                                    <div class="dataTables_info" id="dataTables-example_info" role="alert" aria-live="polite" aria-relevant="all">
-                                        Mostrando {{$proveedores->count()}} a {{$proveedores->lastItem()}} de {{$proveedores->total()}} entradas
-                                    </div>
+                                        <div class="dataTables_info" id="dataTables-example_info" role="alert"
+                                            aria-live="polite" aria-relevant="all">
+                                            Mostrando {{ $proveedores->count() }} de {{ $proveedores->total() }} entradas
+                                        </div>
                                     </div>
 
                                     <div class="col-sm-4 right">
-                                    <div>
-                                        {{ $proveedores->links('vendor.pagination.default') }}
-                                    </div>
+                                        <div>
+                                            {{ $proveedores->links('vendor.pagination.default') }}
+                                        </div>
                                     </div>
                                 </div>
                             </div>

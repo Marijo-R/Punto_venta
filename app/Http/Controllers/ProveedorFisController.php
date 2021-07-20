@@ -9,6 +9,8 @@ use App\Models\Fisico;
 use App\Models\Telefono;
 use App\Models\TelefonoProveedor;
 use Illuminate\Support\Facades\DB;
+use App\Http\Requests\proveedorFisCreateRequest;
+use App\Http\Requests\proveedorFisEditRequest;
 
 class ProveedorFisController extends Controller
 {
@@ -52,7 +54,7 @@ class ProveedorFisController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(proveedorFisCreateRequest $request)
     {
         $fisico = new Fisico;
         $fisico->nombre = $request->input('nombre');
@@ -139,7 +141,7 @@ class ProveedorFisController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id_proveedor)
+    public function update(proveedorFisEditRequest $request, $id_proveedor)
     {
         $id_fisico = ProveedorFisico::select('id_fisico')->where('id_proveedor', '=', $id_proveedor)->get();
         $fisico = Fisico::findOrFail($id_fisico)->first();

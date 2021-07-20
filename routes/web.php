@@ -12,13 +12,12 @@ use App\Http\Controllers\EmpleadoController;
 use App\Http\Controllers\ClienteFisController;
 use App\Http\Controllers\ClienteMorController;
 
-
-Route::view('index','index')->middleware('auth');
-
 //Rutas para el login
 Route::get('/', [SessionController::class, 'create'])->name('login')->middleware('guest');
 Route::post('/login', [SessionController::class, 'store']);
 Route::get('/logout', [SessionController::class, 'destroy'])->middleware('auth');
+
+Route::view('index','index')->middleware('auth');
 
 //CRUD - Usuario
 Route::get('/lista_usuarios', [UsuarioController::class, 'index'])->name('indexUs')->middleware('auth');
@@ -89,16 +88,6 @@ Route::put('/actualizar_cliente_mor/update/{id_cliente}', [ClienteMorController:
 Route::delete('/eliminar_cliente_mor/{id_cliente}', [ClienteMorController::class, 'destroy'])->name('destroyCliMor')->middleware('auth');
 Route::get('/papelera_cliente_mor', [ClienteMorController::class, 'recycle'])->name('recycleCliMor')->middleware('auth');
 Route::get('/recuperar_cliente_mor/{id_cliente}', [ClienteMorController::class, 'recover'])->name('recoverCliMor')->middleware('auth');
-
-//CRUD - Proveedor Fisico
-Route::get('/lista_proveedores_fis', [ProveedorFisController::class, 'index'])->name('indexProvFis')->middleware('auth');
-Route::get('/registrar_proveedor_fis', [ProveedorFisController::class, 'create'])->name('createProvFis')->middleware('auth');
-Route::post('/registrar_proveedor_fis', [ProveedorFisController::class, 'store'])->name('storeProvFis')->middleware('auth');
-Route::get('/actualizar_proveedor_fis/{id_proveedor}', [ProveedorFisController::class, 'edit'])->name('editProvFis')->middleware('auth');
-Route::put('/actualizar_proveedor_fis/update/{id_proveedor}', [ProveedorFisController::class, 'update'])->name('updateProvFis')->middleware('auth');
-Route::delete('/eliminar_proveedor_fis/{id_proveedor}', [ProveedorFisController::class, 'destroy'])->name('destroyProvFis')->middleware('auth');
-Route::get('/papelera_proveedor_fis', [ProveedorFisController::class, 'recycle'])->name('recycleProvFis')->middleware('auth');
-Route::get('/recuperar_proveedor_fis/{id_proveedor}', [ProveedorFisController::class, 'recover'])->name('recoverProvFis')->middleware('auth');
 
 //CRUD - Proveedor Fisico
 Route::get('/lista_proveedores_fis', [ProveedorFisController::class, 'index'])->name('indexProvFis')->middleware('auth');

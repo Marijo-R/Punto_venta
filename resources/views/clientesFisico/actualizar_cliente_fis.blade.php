@@ -19,7 +19,7 @@
                                         <div class="col s12 m2 ">
                                             <label for="numcli" class="form-label">{{ __('No. cliente') }}</label>
                                             <input type="varchar" class="form-control validate" 
-                                                    id="no_cliente" name="no_cliente" placeholder="CL10" value="{{ old('no_cliente',$cliente->no_cliente)">
+                                                    id="no_cliente" name="no_cliente" placeholder="CL10" value="{{ old('no_cliente',$cliente->no_cliente)}}">
                                             @if($errors->has('no_cliente'))
                                                 <span class="error text-danger">
                                                     {{$errors->first('no_cliente')}}

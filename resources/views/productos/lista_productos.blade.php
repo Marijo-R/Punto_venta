@@ -47,9 +47,8 @@
                                             <form action="{{ route('indexProd') }}" method="GET">
                                                 <div class="dataTables_length" id="dataTables-example_length">
                                                     <label>
-                                                        Buscar
-                                                        <input type="text" name="texto" value="{{ $texto }}"
-                                                            class="form-control input-sm"
+                                                        <input type="varchar" name="texto" value="{{ $texto }}"
+                                                            class="form-control input-sm" placeholder="Buscar"
                                                             aria-controls="dataTables-example">
                                                     </label>
                                                     <button type="submit" class="btn btn-default" value="Buscar">
@@ -103,22 +102,23 @@
                                                             method="POST">
                                                             {{ method_field('DELETE') }}
                                                             {{ @csrf_field() }}
-                                                            <button type="submit"
-                                                                onclick="return confirm('¿Esta seguro de eliminar?')"
-                                                                class="btn btn-danger">
+                                                            <button type="submit" class="btn btn-danger"
+                                                                onclick="return confirm('El registro no estará disponible para operaciones en el sistema, para reestablecerlo deberá hacerlo desde papelera.')">
                                                                 <i class="fa fa-trash-o"></i>
                                                             </button>
                                                         </form>
                                                     </td>
                                                     <td class="center" WIDTH="70">
-                                                        <button data-toggle="modal" data-target="#modalempleado-{{ $producto->id_producto }}"
+                                                        <button data-toggle="modal"
+                                                            data-target="#modalempleado-{{ $producto->id_producto }}"
                                                             type="submit" class="btn btn-info"><i
                                                                 class="fa fa-eye"></i></button>
                                                     </td>
                                                 </tr>
                                                 <!-- Modal de empleados-->
-                                                <div class="modal fade" id="modalempleado-{{ $producto->id_producto }}" tabindex="-1" role="dialog"
-                                                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal fade" id="modalempleado-{{ $producto->id_producto }}"
+                                                    tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                                                    aria-hidden="true">
                                                     <div role="document">
                                                         <div class="modal-content">
                                                             <div class="modal-body">
@@ -297,33 +297,17 @@
                                         @endif
                                     </tbody>
                                 </table>
-
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <div class="dataTables_info" id="dataTables-example_info" role="alert"
                                             aria-live="polite" aria-relevant="all">
-                                            Mostrando 1 a 4 de 4 entradas
+                                            Mostrando {{ $productos->count() }} de {{ $productos->total() }} entradas
                                         </div>
                                     </div>
 
-                                    <div class="col-sm-3 right">
+                                    <div class="col-sm-4 right">
                                         <div>
-                                            <ul class="pagination">
-                                                <li class="paginate_button previous disabled">
-                                                    <a href="#">Anterior</a>
-                                                </li>
-                                                <li class="paginate_button previous disabled"
-                                                    aria-controls="dataTables-example" tabindex="0">
-                                                    <a href="#">1</a>
-                                                </li>
-                                                <li class="paginate_button previous disabled"
-                                                    aria-controls="dataTables-example" tabindex="0">
-                                                    <a href="#">2</a>
-                                                </li>
-                                                <li class="paginate_button previous disabled">
-                                                    <a href="#">Siguiente</a>
-                                                </li>
-                                            </ul>
+                                            {{ $productos->links('vendor.pagination.default') }}
                                         </div>
                                     </div>
                                 </div>
